@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="웹 개발자 이력서">
+  <meta name="keywords" content="웹 개발자, 풀스택, java, spring, 이력서">
+  <meta name="author" content="JJ">
+  <title>JJ | 풀스택 웹 개발자</title>
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+            dark: { bg: '#0f172a', card: '#1e293b', border: '#334155' }
+          },
+          fontFamily: {
+            sans: ['Noto Sans KR', 'system-ui', 'sans-serif']
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+            'blink': 'blink 1s step-end infinite'
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <!-- 커스텀 스타일 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-gray-200 transition-colors duration-300">
+
+  <!-- ==================== Navigation ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- 로고 -->
+        <a href="#hero" class="text-xl font-bold text-primary-600 dark:text-primary-400">
+          <span class="text-gray-400">Dev_JJ.</span>
+        </a>
+
+        <!-- 데스크탑 메뉴 -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="#about" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">소개</a>
+          <a href="#skills" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">기술</a>
+          <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">경력</a>
+          <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">프로젝트</a>
+          <a href="#education" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">학력</a>
+          <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">연락처</a>
+        </div>
+
+        <!-- 우측 버튼 -->
+        <div class="flex items-center space-x-2">
+          <!-- 다크모드 토글 -->
+          <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors" aria-label="다크모드 토글">
+            <i data-feather="moon" class="w-5 h-5 dark:hidden"></i>
+            <i data-feather="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+          </button>
+
+          <!-- 모바일 햄버거 -->
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors" aria-label="메뉴 열기">
+            <i data-feather="menu" class="w-5 h-5" id="menuIcon"></i>
+            <i data-feather="x" class="w-5 h-5 hidden" id="closeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 모바일 메뉴 -->
+      <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+        <div class="pb-4 space-y-1">
+          <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">소개</a>
+          <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">기술</a>
+          <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">경력</a>
+          <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">프로젝트</a>
+          <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">학력</a>
+          <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">연락처</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== Hero ==================== -->
+  <section id="hero" class="min-h-screen flex items-center pt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- 프로필 이미지 -->
+        <div class="flex-shrink-0">
+          <div class="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 p-1 shadow-xl">
+            <div class="w-full h-full rounded-full bg-gray-200 dark:bg-dark-card flex items-center justify-center overflow-hidden">
+              <!-- 폴백 아바타 -->
+              <i data-feather="user" class="w-24 h-24 text-gray-400 dark:text-gray-500"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- 텍스트 -->
+        <div class="text-center md:text-left">
+          <p class="text-primary-600 dark:text-primary-400 font-medium mb-2">안녕하세요, 저는</p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            JJ
+          </h1>
+          <div class="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-6 h-8">
+            <span id="typingText"></span><span class="typing-cursor">|</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 max-w-lg mb-8 leading-relaxed">
+            5년차 웹 개발자로 java,Spring framework 기반의 웹 서비스 개발 및 운영 경험이 있습니다.
+            사용자 경험을 중시하며, 클린 코드를 지향합니다.
+          </p>
+
+          <!-- 연락처 미니 -->
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400 mb-8">
+            <span class="flex items-center gap-1"><i data-feather="mail" class="w-4 h-4"></i> EMAIL</span>
+            <span class="flex items-center gap-1"><i data-feather="phone" class="w-4 h-4"></i> PHONE NUMBER</span>
+            <span class="flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4"></i> 서울특별시</span>
+          </div>
+
+          <!-- CTA 버튼 -->
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary-600/25">
+              <i data-feather="send" class="w-4 h-4"></i> 연락하기
+            </a>
+            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg font-medium transition-colors">
+              <i data-feather="folder" class="w-4 h-4"></i> 프로젝트 보기
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== About Me ==================== -->
+  <section id="about" class="py-20 bg-white dark:bg-dark-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">소개</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- 자기소개 텍스트 -->
+        <div class="fade-in-section">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">About Me</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            안녕하세요! 5년차 풀스택 웹 개발자 JJ입니다.
+            java와 Spring framework를 기반으로 사용자 중심의 웹 서비스를 개발하고 있습니다.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            빠르게 변화하는 기술 트렌드를 따라가며, 팀원들과의 원활한 소통을 통해
+            더 나은 서비스를 만들기 위해 노력합니다. 클린 코드를 지향하며,
+            사용자 경험을 최우선으로 생각합니다.
+          </p>
+
+          <!-- 핵심 역량 뱃지 -->
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge">문제 해결</span>
+            <span class="skill-badge">팀 협업</span>
+            <span class="skill-badge">클린 코드</span>
+            <span class="skill-badge">UX 중시</span>
+            <span class="skill-badge">애자일</span>
+          </div>
+        </div>
+
+        <!-- 인적 사항 카드 -->
+        <div class="fade-in-section">
+          <div class="bg-gray-50 dark:bg-dark-bg rounded-2xl p-6 space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-feather="user" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">이름</p>
+                <p class="font-medium text-gray-900 dark:text-white">JJ</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-feather="briefcase" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">직함</p>
+                <p class="font-medium text-gray-900 dark:text-white">풀스택 웹 개발자</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-feather="calendar" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">경력</p>
+                <p class="font-medium text-gray-900 dark:text-white">5년차 (2022 ~)</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-feather="map-pin" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">위치</p>
+                <p class="font-medium text-gray-900 dark:text-white">서울특별시</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Skills ==================== -->
+  <section id="skills" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">기술 스택</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Frontend -->
+        <div class="skill-category-card fade-in-section">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+              <i data-feather="monitor" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Frontend</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">HTML / CSS</span>
+                <span class="text-gray-500 dark:text-gray-400">95%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="95"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">JavaScript</span>
+                <span class="text-gray-500 dark:text-gray-400">90%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="90"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">React</span>
+                <span class="text-gray-500 dark:text-gray-400">85%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="85"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">TailwindCSS</span>
+                <span class="text-gray-500 dark:text-gray-400">80%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category-card fade-in-section">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <i data-feather="server" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Backend</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Node.js</span>
+                <span class="text-gray-500 dark:text-gray-400">85%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="85"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Express</span>
+                <span class="text-gray-500 dark:text-gray-400">80%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="80"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Python</span>
+                <span class="text-gray-500 dark:text-gray-400">70%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="70"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">MySQL / MongoDB</span>
+                <span class="text-gray-500 dark:text-gray-400">75%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="75"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-category-card fade-in-section">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+              <i data-feather="tool" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Tools</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Git / GitHub</span>
+                <span class="text-gray-500 dark:text-gray-400">90%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="90"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Docker</span>
+                <span class="text-gray-500 dark:text-gray-400">70%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="70"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">AWS</span>
+                <span class="text-gray-500 dark:text-gray-400">65%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="65"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-700 dark:text-gray-300">Figma</span>
+                <span class="text-gray-500 dark:text-gray-400">60%</span>
+              </div>
+              <div class="progress-track"><div class="progress-bar" data-width="60"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Experience ==================== -->
+  <section id="experience" class="py-20 bg-white dark:bg-dark-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">경력</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="timeline-container fade-in-section">
+        <!-- 경력 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-sm font-medium text-primary-600 dark:text-primary-400">2022.03 - 현재</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">(주)LIT</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">웹 개발자</p>
+            <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+              <li class="flex items-start gap-2">
+                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mt-1 flex-shrink-0"></i>
+                java기반의 웹앱 서비스 개발
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mt-1 flex-shrink-0"></i>
+                채널계 멤버십 웹앱 서비스 운영
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mt-1 flex-shrink-0"></i>
+                성능 최적화로 페이지 로딩 속도 40% 개선
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">java</span>
+              <span class="tech-tag">javascript</span>
+              <span class="tech-tag">Harvest CA SCM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 경력 2 -->
+         
+  </section>
+
+  <!-- ==================== Projects ==================== -->
+  <section id="projects" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">프로젝트</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- TaskFlow -->
+        <div class="project-card fade-in-section">
+          <div class="project-card-cover bg-gradient-to-br from-blue-500 to-indigo-600">
+            <i data-feather="check-square" class="w-16 h-16 text-white/80"></i>
+            <div class="project-card-overlay">
+              <a href="#" class="project-link-btn">
+                <i data-feather="external-link" class="w-4 h-4"></i> Demo
+              </a>
+              <a href="#" class="project-link-btn">
+                <i data-feather="github" class="w-4 h-4"></i> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">TaskFlow</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">팀 협업 프로젝트 관리 도구. 칸반 보드, 실시간 알림, 팀원 관리 기능을 제공합니다.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WeatherNow -->
+        <div class="project-card fade-in-section">
+          <div class="project-card-cover bg-gradient-to-br from-teal-500 to-cyan-600">
+            <i data-feather="cloud" class="w-16 h-16 text-white/80"></i>
+            <div class="project-card-overlay">
+              <a href="#" class="project-link-btn">
+                <i data-feather="external-link" class="w-4 h-4"></i> Demo
+              </a>
+              <a href="#" class="project-link-btn">
+                <i data-feather="github" class="w-4 h-4"></i> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">WeatherNow</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">실시간 날씨 대시보드. 현재 위치 기반 날씨, 주간 예보, 미세먼지 정보를 제공합니다.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">OpenWeather API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DevBlog -->
+        <div class="project-card fade-in-section">
+          <div class="project-card-cover bg-gradient-to-br from-purple-500 to-pink-600">
+            <i data-feather="edit-3" class="w-16 h-16 text-white/80"></i>
+            <div class="project-card-overlay">
+              <a href="#" class="project-link-btn">
+                <i data-feather="external-link" class="w-4 h-4"></i> Demo
+              </a>
+              <a href="#" class="project-link-btn">
+                <i data-feather="github" class="w-4 h-4"></i> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">DevBlog</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">개인 기술 블로그. MDX 기반 포스팅, SEO 최적화, 다크모드를 지원합니다.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">MDX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Education ==================== -->
+  <section id="education" class="py-20 bg-white dark:bg-dark-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">학력</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="max-w-2xl mx-auto fade-in-section">
+        <div class="bg-gray-50 dark:bg-dark-bg rounded-2xl p-8 flex items-start gap-6">
+          <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+            <i data-feather="book-open" class="w-7 h-7 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">대학교</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-1">정보통신공학과 학사 졸업</p>
+            <p class="text-sm text-primary-600 dark:text-primary-400 font-medium">2013 - 2021</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Contact ==================== -->
+  <section id="contact" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">연락처</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-section">
+        <!-- 이메일 -->
+        <a href="mailto:gildong@example.com" class="contact-card">
+          <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+            <i data-feather="mail" class="w-6 h-6 text-red-500"></i>
+          </div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-1">이메일</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">youngje3431@gmail.com</p>
+        </a>
+
+        <!-- 전화 -->
+        <a href="tel:010-1234-5678" class="contact-card">
+          <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mb-4">
+            <i data-feather="phone" class="w-6 h-6 text-green-500"></i>
+          </div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-1">전화</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">010-1234-5678</p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/gildong" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center mb-4">
+            <i data-feather="github" class="w-6 h-6 text-gray-700 dark:text-gray-300"></i>
+          </div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-1">GitHub</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">github.com/Jaejae-mac</p>
+        </a>
+
+        <!-- 위치 -->
+        <div class="contact-card">
+          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4">
+            <i data-feather="map-pin" class="w-6 h-6 text-blue-500"></i>
+          </div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-1">위치</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">서울특별시</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SNS Links ==================== -->
+  <section id="sns" class="py-20 bg-white dark:bg-dark-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">SNS</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-3 md:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto fade-in-section">
+        <a href="https://github.com/Jaejae-mac" target="_blank" rel="noopener noreferrer" class="sns-card" data-sns="github">
+          <i data-feather="github" class="w-8 h-8"></i>
+          <span class="text-sm font-medium mt-2">GitHub</span>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="sns-card" data-sns="instagram">
+          <i data-feather="instagram" class="w-8 h-8"></i>
+          <span class="text-sm font-medium mt-2">Instagram</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="sns-card" data-sns="linkedin">
+          <i data-feather="linkedin" class="w-8 h-8"></i>
+          <span class="text-sm font-medium mt-2">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="py-8 bg-gray-900 dark:bg-gray-950 text-gray-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <!-- SNS 아이콘들 -->
+        <div class="flex items-center justify-center gap-4">
+          <a href="https://github.com/gildong" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+            <i data-feather="github" class="w-5 h-5"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+            <i data-feather="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a href="mailto:gildong@example.com" class="hover:text-white transition-colors">
+            <i data-feather="mail" class="w-5 h-5"></i>
+          </a>
+        </div>
+        <!-- 저작권 -->
+        <p class="text-sm">&copy; JJ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 맨 위로 버튼 -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 z-40" aria-label="맨 위로">
+    <i data-feather="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 스크립트 -->
+  <script src="js/script.js"></script>
+  <script>feather.replace();</script>
+</body>
+</html>
